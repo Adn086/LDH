@@ -66,14 +66,29 @@ public class TOPTWGRASP {
         System.out.println(" --> MEDIA: "+averageFitness);
         System.out.println(" --> MEJOR SOLUCION: "+bestSolution);
     }
-    
+
+    /**
+     * @brief Genera una selección aleatoria segura dentro de un rango específico.
+     *
+     * Esta función utiliza la clase SecureRandom para generar un número aleatorio de forma segura.
+     * Se proporciona un valor máximo, y la función devuelve un número entre 0 (inclusive) y el valor máximo (exclusivo).
+     *
+     * @param maxTRCL Valor máximo para la selección aleatoria. El rango va de 0 a maxTRCL-1.
+     * @return Un número aleatorio seguro entre 0 (inclusive) y maxTRCL (exclusivo).
+     */
     public int aleatorySelectionRCL(int maxTRCL) {
-       SecureRandom random = new SecureRandom();
-       byte[] bytes = new byte[20];
-       random.nextBytes(bytes);
-       int low = 0;
-       int high = maxTRCL;
-       return random.nextInt(high-low) + low;
+        // Crear una nueva instancia de SecureRandom para generar números aleatorios seguros.
+        SecureRandom random = new SecureRandom();
+
+        // Crear un arreglo de bytes para recoger datos aleatorios y aumentar la entropía.
+        byte[] bytes = new byte[20];
+        random.nextBytes(bytes);
+
+        // Calcular un número aleatorio entre 0 (inclusive) y maxTRCL (exclusivo).
+        int posSelected = random.nextInt(maxTRCL);
+
+        // Devolver la posición seleccionada aleatoriamente.
+        return posSelected;
     }
     
     public int fuzzySelectionBestFDRCL(ArrayList< double[] > rcl) {
